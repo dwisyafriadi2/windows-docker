@@ -1,0 +1,33 @@
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      VERSION: "tiny10"
+      RAM_SIZE: "6G"
+      CPU_CORE: 3
+      DISK_SIZE: "80G"
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006
+      - 1239:3389/tcp
+      - 1239:3389/udp
+      - 5300:5300
+      - 5200:5200
+      - 8700:8700
+      - 5600:5600
+      - 10001:10001
+      - 11000:11000
+      - 12001:12001
+      - 7777:7777
+      - 4300:4300
+      - 9001:9001
+      - 9102:9102
+      - 9101:9101
+    stop_grace_period: 2m
+    volumes:
+      - ./data:/storage
+      - ./share:/shared
